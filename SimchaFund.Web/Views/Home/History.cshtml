@@ -1,0 +1,51 @@
+﻿@model ViewModel
+<div b-2ya7vgwtda class="container">
+    <main b-2ya7vgwtda role="main" class="pb-3" style="margin-top: 60px;">
+
+        <div class="header">
+            <h1>History for @Model.ContributorName</h1>
+            <h3>Current Balance: @Model.Balance.ToString("C")</h3>
+        </div>
+
+        <div class="row header">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Action</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
+                    @foreach (var a in Model.Actions)
+                    {
+                        <tr>
+                            @if (a.SimchaName == null)
+                            {
+                                <td>
+                                    Deposit
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    Contribution for the @a.SimchaName simcha
+                                </td>
+                            }
+
+                            <td style="text-align: center; vertical-align: middle;">
+                                @a.Date.ToLongDateString()
+                            </td>
+                            <td style="text-align: center; vertical-align: middle;">
+                                @a.Amount.ToString("C")
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+        <div style="text-align:center;">
+            <a class="btn btn-lg btn-danger" href="/home/contributors">Back to Contributors</a>
+        </div>
+    </main>
+</div>
