@@ -6,7 +6,6 @@ namespace SimchaFund.Web.Models
     {
         public List<Simcha> Simchas { get; set; }
         public List<Contributor> Contributors { get; set; }
-        public List<Payment> Contributions { get; set; }
         public List<Payment> Actions { get; set; }
         public string ContributorName { get; set; }
         public decimal Balance { get; set; }

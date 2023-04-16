@@ -185,8 +185,8 @@ namespace SimchaFund.Data
             using var cmd = connection.CreateCommand();
             cmd.CommandText = "SELECT s.SimchaName, sc.Amount, s.Date FROM Simchas s " +
                 "LEFT JOIN SimchasContributors sc ON s.Id = sc.SimchaId " +
-                "LEFT JOIN Contributors c ON c.Id = sc.ContributorId " +
-                "WHERE c.Id = @id";
+                //"LEFT JOIN Contributors c ON c.Id = sc.ContributorId " +
+                "WHERE sc.ContributorId = @id";
             cmd.Parameters.AddWithValue("@id", id);
             var list = new List<Payment>();
             connection.Open();
@@ -306,7 +306,6 @@ namespace SimchaFund.Data
     }
     public class Payment
     {
-        public int Id { get; set; }
         public int ContributorId { get; set; }
         public bool YesContribute { get; set; }
         public int SimchaId { get; set; }
